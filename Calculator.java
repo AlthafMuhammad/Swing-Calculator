@@ -12,12 +12,16 @@ import javax.swing.SwingConstants;
 import sun.swing.SwingAccessor;
 
 public class Calculator implements ActionListener{
+	
+	boolean isOperatorClicked=false;
+	
 	JFrame jf;
 	JLabel displayLabel;
 	JButton sevButton,eightButton,nineButton,fourButton,fiveButton,sixButton,oneButton,twoButton,
 			threeButton,dotButton,zeroButton,equalButton,divButton,mulButton,subButton,addButton,
 			clearButton;
-	
+	String oldValue;
+	String Op;
 	
 	public Calculator() {
 		jf=new JFrame("Calculator");
@@ -155,53 +159,168 @@ public class Calculator implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==sevButton) 
-			{		
+			{
+			 if(isOperatorClicked) {
+				 displayLabel.setText("7");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"7");
+			 }
 			}
 		else if(e.getSource()==eightButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("8");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"8");
+			 }
 			}
 		else if(e.getSource()==nineButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("9");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"9");
+			 }
 			}
 		else if(e.getSource()==fourButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("4");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"4");
+			 }
 			}
 		else if(e.getSource()==fiveButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("5");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"5");
+			 }
 			}
 		else if(e.getSource()==sixButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("6");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"6");
+			 }
 			}
 		else if(e.getSource()==oneButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("1");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"1");
+			 }
 			}
 		else if(e.getSource()==twoButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("2");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"2");
+			 }
 			}
 		else if(e.getSource()==threeButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("3");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"3");
+			 }
 			}
 		else if(e.getSource()==dotButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText(".");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+".");
+			 }
 			}
 		else if(e.getSource()==zeroButton) 
 			{		
+			if(isOperatorClicked) {
+				 displayLabel.setText("0");
+				 isOperatorClicked=false;
+			 }
+			 else {
 			 displayLabel.setText(displayLabel.getText()+"0");
+			 }
 			}
 		else if(e.getSource()==clearButton) 
-		{		
-		 displayLabel.setText("");
-		}
+			{		
+			 displayLabel.setText("");
+			}
+		else if(e.getSource()==divButton) 
+			{		
+			 isOperatorClicked=true;
+			 oldValue=displayLabel.getText();
+			 Op="div";
+			 
+			}
+		else if(e.getSource()==mulButton) 
+			{		
+			 isOperatorClicked=true;
+			 oldValue=displayLabel.getText();
+			 Op="mul";
+			}
+		else if(e.getSource()==subButton) 
+			{		
+			 isOperatorClicked=true;
+			 oldValue=displayLabel.getText();
+			 Op="sub";
+			}
+		else if(e.getSource()==addButton) 
+			{		
+			 isOperatorClicked=true;
+			 oldValue=displayLabel.getText();
+			 Op="add";
+			}
+		else if(e.getSource()==equalButton) 
+			{		
+			 String newValue=displayLabel.getText();
+			 float oldValueF=Float.parseFloat(oldValue);
+			 float newValueF=Float.parseFloat(newValue);
+			 float result;
+			 isOperatorClicked=true;
+			 if(Op=="div") {
+				 result=oldValueF/newValueF;
+				 displayLabel.setText(result+"");
+			 }
+			 else if(Op=="mul") {
+				 result=oldValueF*newValueF;
+				 displayLabel.setText(result+"");
+			 }
+			 else if(Op=="sub") {
+				 result=oldValueF-newValueF;
+				 displayLabel.setText(result+"");
+			 }
+			 else if(Op=="add") {
+				 result=oldValueF+newValueF;
+				 displayLabel.setText(result+"");
+			 }
+			}
 	}
 		
 }
