@@ -2,6 +2,9 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import sun.swing.SwingAccessor;
 
 public class Calculator{
 	public Calculator() {
@@ -12,10 +15,12 @@ public class Calculator{
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel displayLabel=new JLabel("Output");
+		JLabel displayLabel=new JLabel("Output ");
 		displayLabel.setBounds(25, 50, 540, 40);
 		displayLabel.setBackground(Color.gray);
 		displayLabel.setOpaque(true);
+		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		displayLabel.setForeground(Color.white);
 		jf.add(displayLabel);
 	}
 	
